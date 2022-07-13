@@ -14,19 +14,12 @@ import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
-/**
- * _______________________
- *
- * @author lijinhao
- * @version 2.0
- * @program mqtt-demo
- * @date 2022/7/12 21:04
- */
-
 @Configuration
 public class MqttConfig {
 
-    // 消费消息
+    /**
+     * 1. 先创建连接
+     */
 
     /**
      * 创建MqttPahoClientFactory，设置MQTT Broker连接属性，如果使用SSL验证，也在这里设置。
@@ -38,14 +31,14 @@ public class MqttConfig {
         MqttConnectOptions options = new MqttConnectOptions();
 
         // 设置代理端的URL地址，可以是多个
-        options.setServerURIs(new String[]{"tcp://localhost:1886"});
+        options.setServerURIs(new String[]{"tcp://127.0.0.1:1883"});
 
         factory.setConnectionOptions(options);
         return factory;
     }
 
     /**
-     * 入站通道
+     * 2、入站通道
      */
     @Bean
     public MessageChannel mqttInputChannel() {
@@ -72,6 +65,11 @@ public class MqttConfig {
         return adapter;
     }
 
+
+    /**
+     * 3、消息转化，中间站
+     */
+
     @Bean
     // ServiceActivator注解表明：当前方法用于处理MQTT消息，inputChannel参数指定了用于消费消息的channel。
     @ServiceActivator(inputChannel = "mqttInputChannel")
@@ -95,7 +93,9 @@ public class MqttConfig {
         };
     }
 
-    // 发送消息
+    /**
+     * 4、消息出去
+     */
 
     /**
      * 出站通道

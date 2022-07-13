@@ -3,16 +3,7 @@ package com.example.mqttdemo.service;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
-
-/**
- * _______________________
- *
- * @author lijinhao
- * @version 2.0
- * @program mqtt-demo
- * @date 2022/7/12 21:05
- */
-
+import org.springframework.stereotype.Component;
 @MessagingGateway(defaultRequestChannel = "mqttOutboundChannel")
 public interface MqttGateway {
     // 定义重载方法，用于消息发送
