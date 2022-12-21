@@ -1,4 +1,6 @@
 # mqtt-demo
+## function
+mqtt-demo基于Spring Integration和SpringBoot框架实现了java平台上的消息订阅和转发
 
 ## Introduce
 Spring Integration是一种轻量级消息传递模块，并支持通过声明式适配器与外部系统集成。
@@ -141,9 +143,9 @@ public MessageHandler defaultInboundHandler() {
      };
 }
 ```
-`Service Activator`用来绑定`MessageHandler`和用于消费消息的`MessageChannel`
-5. Channel Adapter  
-![](https://image-20220620.oss-cn-guangzhou.aliyuncs.com/image/20221221150742.png)  
+`Service Activator`用来绑定`MessageHandler`和用于消费消息的`MessageChannel`  
+5. Channel Adapter    
+![](https://image-20220620.oss-cn-guangzhou.aliyuncs.com/image/20221221150742.png)    
 `ChannelAdapter`用来连接`MessageChannel`和具体的消息端口，例如通信的`topic`
    
 ## Interactive logic
