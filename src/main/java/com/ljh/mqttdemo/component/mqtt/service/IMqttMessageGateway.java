@@ -7,6 +7,10 @@ import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
+/**
+ * 定义一个 @MessagingGateway 修饰的接口，用于消息的发送，
+ * @MessagingGateway 的 defaultRequestChannel 参数用于绑定具体的 MessageChannel
+ */
 @Component
 @MessagingGateway(defaultRequestChannel = ChannelName.OUTBOUND)
 public interface IMqttMessageGateway {
