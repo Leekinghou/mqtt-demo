@@ -1,0 +1,9 @@
+mqtt:
+  protocol: tcp
+  host: 81.71.127.49 # 192.168.1.1
+  port: 1883
+  username: JavaServer
+  password: 123456
+  client-id: 123456
+  # Topics that need to be subscribed when initially connecting to mqtt, multiple topics are divided by ",".
+  inbound-topic: sys/+/available
